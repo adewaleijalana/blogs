@@ -18,23 +18,23 @@ app.post('/events', async (req, res) => {
         console.log(error.message);
     }
 
-    // try {
-    //     await axios.post('http://localhost:4001/events', eventObj);
-    // } catch (error) {
-    //     console.log(error.message);
-    // }
+    try {
+        await axios.post('http://comments-service:4001/events', eventObj);
+    } catch (error) {
+        console.log(error.message);
+    }
 
-    // try {
-    //     await axios.post('http://localhost:4002/events', eventObj);
-    // } catch (error) {
-    //     console.log(error.message);
-    // }
+    try {
+        await axios.post('http://query-service:4002/events', eventObj);
+    } catch (error) {
+        console.log(error.message);
+    }
 
-    // try {
-    //     await axios.post('http://localhost:4003/events', eventObj);
-    // } catch (error) {
-    //     console.log(error.message);
-    // }
+    try {
+        await axios.post('http://moderation-service:4003/events', eventObj);
+    } catch (error) {
+        console.log(error.message);
+    }
 
     res.send({ status: 'OK' });
 });
