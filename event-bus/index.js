@@ -13,7 +13,7 @@ app.post('/events', async (req, res) => {
     events.push(eventObj)
 
     try {
-        await axios.post('http://localhost:4000/events', eventObj);
+        await axios.post('http://posts-service:4000/events', eventObj);
     } catch (error) {
         console.log(error.message);
     }
