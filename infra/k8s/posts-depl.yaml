@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: posts-depl
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: posts
@@ -34,7 +34,7 @@ spec:
   selector:
     app: posts
   ports:
-  - port: 4000
-    name: posts
-    protocol: TCP
-    targetPort: 4000
+    - port: 4000
+      name: posts
+      protocol: TCP
+      targetPort: 4000

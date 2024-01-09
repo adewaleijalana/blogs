@@ -1,0 +1,57 @@
+apiVersion: skaffold/v3
+kind: Config
+manifests:
+  rawYaml:
+    - ./infra/k8s/*
+build:
+  local:
+    push: false
+  artifacts:
+    - image: adewaleijalana/blog-client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: 'src/**/*.js'
+            src: .
+    - image: adewaleijalana/comments
+      context: comments
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: '*.js'
+            src: .
+    - image: adewaleijalana/event-bus
+      context: event-bus
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: '*.js'
+            src: .
+    - image: adewaleijalana/moderation
+      context: moderation
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: '*.js'
+            src: .
+    - image: adewaleijalana/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: '*.js'
+            src: .
+    - image: adewaleijalana/query
+      context: query
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - dest: '*.js'
+            src: .
